@@ -1,0 +1,52 @@
+<!-- index.html (Login Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <div class="form-group">
+      <input type="email" id="login-email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <input type="password" id="login-password" placeholder="Password">
+    </div>
+    <button id="login-btn">Login</button>
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+  </div>
+
+  <script type="module">
+    // Importing the loginUser function from loginregister.js
+    import { loginUser } from "./loginregister.js";  
+
+    // Function to handle the login process
+    function login() {
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+
+      // Basic validation
+      if (!email || !password) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      loginUser(email, password)
+        .then((userCredential) => {
+          alert("Login successful!");
+          window.location.href = "home.html";  // Redirect to home page after successful login
+        })
+        .catch((error) => {
+          alert(error.message);  // Display error message
+        });
+    }
+
+    // Attach the login function to the button click event
+    document.getElementById("login-btn").addEventListener("click", login);
+  </script>
+</body>
+</html>
