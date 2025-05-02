@@ -4,6 +4,10 @@ import React, { useRef, useState, useEffect } from 'react'
 import backend from '@tensorflow/tfjs-backend-webgl'
 import Webcam from 'react-webcam'
 import { count } from '../../utils/music'; 
+import { db } from "./firebase"; // adjust the path if needed
+import { doc, setDoc } from "firebase/firestore";
+import { getAuth } from 'firebase/auth';
+
  
 import Instructions from '../../components/Instrctions/Instructions';
 
@@ -13,7 +17,6 @@ import DropDown from '../../components/DropDown/DropDown';
 import { poseImages } from '../../utils/pose_images';
 import { POINTS, keypointConnections } from '../../utils/data';
 import { drawPoint, drawSegment } from '../../utils/helper'
-
 
 
 let skeletonColor = 'rgb(255,255,255)'
@@ -27,6 +30,17 @@ let interval
 // flag variable is used to help capture the time when AI just detect 
 // the pose as correct(probability more than threshold)
 let flag = false
+const saveBestTime = async (poseName, duration, userId) => {
+  const today = new Date().toISOString().split('T')[0]; // "2025-04-30"
+  try {
+    await setDoc(doc(db, "users", userId, "poses", poseName), {
+      [today]: duration,
+    }, { merge: true });
+    console.log("Saved best time to Firebase!");
+  } catch (error) {
+    console.error("Error saving best time:", error);
+  }
+};
 
 
 function Yoga() {
@@ -204,6 +218,12 @@ function Yoga() {
   function stopPose() {
     setIsStartPose(false)
     clearInterval(interval)
+     // Save the best time to Firebase here
+     const user = getAuth().currentUser;
+     if (user) {
+      const userId = user.uid;
+      saveBestTime(currentPose, Math.round(bestPerform), userId);
+    }
   }
 
     

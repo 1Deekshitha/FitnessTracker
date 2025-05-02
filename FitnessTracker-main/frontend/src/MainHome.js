@@ -30,13 +30,19 @@ function MainHome() {
           />
           <p>Yoga</p>
         </div>
-        <div className="tab squat" onClick={() => handleNavigation('/squat')}>
+        {/*<div className="tab squat" onClick={() => handleNavigation('/squat')}>
           <img
             src="https://media.gettyimages.com/id/605772224/photo/tight-toned.jpg?s=612x612&w=gi&k=20&c=gFCHM7SKDGE0hKNPO4E-kVRK7VgahxZY0lDXetEvpLw="
             alt="Squat"
           />
           <p>Squat</p>
+        </div>*/}
+        <div className='tab graph' onClick={() => handleNavigation('/graph')}>
+          <p>Fitness Tracker</p>
         </div>
+
+
+        
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 // Import Firebase SDK
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Firebase Configuration
 const firebaseConfig = {
@@ -16,6 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);  // Initialize Firebase Authentication
+const db = getFirestore(app);
 
 // Register function
 export function registerUser(email, password) {
@@ -26,3 +28,4 @@ export function registerUser(email, password) {
 export function loginUser(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
+export{auth,db};

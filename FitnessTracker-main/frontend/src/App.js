@@ -9,6 +9,7 @@ import Register from './Register';
 
 import './App.css';
 import MainHome from './MainHome';
+import YogaGraph from './pages/Yoga/YogaGraph';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/start' element={<Yoga />} />
         <Route path='/tutorials' element={<Tutorials />} />
+        <Route path='/graph' element={<YogaGraph/>}/>
       </Routes>
     </Router>
   );
