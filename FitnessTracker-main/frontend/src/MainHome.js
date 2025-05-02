@@ -17,7 +17,7 @@ function MainHome() {
         <source src={bgVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="heading"><h1>FITTNESS TRACKER</h1>
+      <div className="heading"><h1>FITNESS TRACKER</h1>
       </div>
       
 
@@ -30,15 +30,21 @@ function MainHome() {
           />
           <p>Yoga</p>
         </div>
-        {/*<div className="tab squat" onClick={() => handleNavigation('/squat')}>
-          <img
-            src="https://media.gettyimages.com/id/605772224/photo/tight-toned.jpg?s=612x612&w=gi&k=20&c=gFCHM7SKDGE0hKNPO4E-kVRK7VgahxZY0lDXetEvpLw="
-            alt="Squat"
-          />
-          <p>Squat</p>
-        </div>*/}
+    
+
         <div className='tab graph' onClick={() => handleNavigation('/graph')}>
+          <img 
+          src="https://images.stockcake.com/public/8/2/1/82165c74-e12e-49bd-a041-b02a52053e64_large/technology-in-fitness-stockcake.jpg"
+          alt="Fitness Tracker"
+          />
           <p>Fitness Tracker</p>
+        </div>
+        <div className="tab Health" onClick={() => handleNavigation('/home')}>
+          <img
+            src="https://marketplace.canva.com/EAFt8Mx_sTo/1/0/1143w/canva-blue-and-pink-illustrated-mental-health-poster-JFwHvzM3QWA.jpg"
+            alt="mental health"
+          />
+          <p>Mental health</p>
         </div>
 
 

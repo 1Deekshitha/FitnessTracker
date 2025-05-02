@@ -5,8 +5,15 @@ import {
 import { db } from '../../loginregister';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
 
 const YogaGraph = () => {
+  const navigate = useNavigate();
+  const handleNavigation = (path) => {
+      navigate(path);
+    };
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -43,6 +50,11 @@ const YogaGraph = () => {
 
   return (
     <div style={{ backgroundColor: '#0d1b2a', color: 'white', padding: '20px', minHeight: '100vh' }}>
+      <div className="back-button-container">
+      <button className="btn start-btn" onClick={() => handleNavigation('/MainHome')}>
+        Back
+      </button>
+    </div>
       <h2 style={{ textAlign: 'center' }}>Your Best Times Per Pose</h2>
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={data}>
