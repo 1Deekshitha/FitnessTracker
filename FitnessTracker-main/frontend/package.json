@@ -16,7 +16,8 @@
     "react-scripts": "4.0.3",
     "react-webcam": "^6.0.0",
     "recharts": "^2.15.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "yogaIntelliJ": "file:"
   },
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",

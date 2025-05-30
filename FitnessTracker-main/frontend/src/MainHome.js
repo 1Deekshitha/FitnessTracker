@@ -39,7 +39,9 @@ function MainHome() {
           />
           <p>Fitness Tracker</p>
         </div>
-        <div className="tab Health" onClick={() => handleNavigation('/home')}>
+        <div className="tab Health" onClick={() => {
+          window.location.href = 'http://127.0.0.1:5000/login'; // Change to your other project's local URL
+        }}>
           <img
             src="https://marketplace.canva.com/EAFt8Mx_sTo/1/0/1143w/canva-blue-and-pink-illustrated-mental-health-poster-JFwHvzM3QWA.jpg"
             alt="mental health"

@@ -130,15 +130,25 @@ function Yoga() {
   }
 
   const runMovenet = async () => {
-    const detectorConfig = {modelType: poseDetection.movenet.modelType.SINGLEPOSE_THUNDER};
+  try {
+    const detectorConfig = { modelType: poseDetection.movenet.modelType.SINGLEPOSE_THUNDER };
     const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
-    const poseClassifier = await tf.loadLayersModel('https://models.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
-    const countAudio = new Audio(count)
-    countAudio.loop = true
-    interval = setInterval(() => { 
-        detectPose(detector, poseClassifier, countAudio)
-    }, 100)
+    console.log("✅ MoveNet detector loaded");
+
+    const poseClassifier = await tf.loadLayersModel('https://models.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json');
+    console.log("✅ Pose classifier model loaded");
+
+    const countAudio = new Audio(count);
+    countAudio.loop = true;
+
+    interval = setInterval(() => {
+      detectPose(detector, poseClassifier, countAudio);
+    }, 100);
+  } catch (error) {
+    console.error("❌ Error in runMovenet:", error);
   }
+};
+
 
   const detectPose = async (detector, poseClassifier, countAudio) => {
     if (
