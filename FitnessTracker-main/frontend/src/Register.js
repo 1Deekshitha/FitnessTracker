@@ -1,7 +1,8 @@
 // src/Register.js
 import React, { useState } from 'react';
 import { registerUser } from './loginregister'; // Import register function from loginregister.js
-import styles from './authstyle.module.css'; // Import styles for the register page
+import styles from './authstyle.module.css'; // Import styles for the register page\
+import { Link } from 'react-router-dom';
 
 function Register() {
   // State for storing input values and error message
@@ -20,7 +21,7 @@ function Register() {
     try {
       await registerUser(email, password); // Call the registerUser function from loginregister.js
       alert('You have registered successfully!');
-      window.location.href = '/home'; // Redirect to home page after successful registration
+     navigate('/MainHome');// Redirect to home page after successful registration
     } catch (err) {
       setError(err.message); // Set the error message in case of failure
     }
@@ -50,8 +51,8 @@ function Register() {
       </div>
       <button onClick={handleRegister}>Register</button>
       <p>
-        Already have an account? <a href="/">Login here</a>
-      </p>
+  Already Have an account? <Link to="/login">Login here</Link>
+</p>
     </div>
   );
 }
