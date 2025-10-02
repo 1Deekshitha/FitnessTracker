@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { registerUser } from './loginregister'; // Import register function from loginregister.js
 import styles from './authstyle.module.css'; // Import styles for the register page\
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 
 function Register() {
   // State for storing input values and error message
