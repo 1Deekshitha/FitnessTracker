@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  // Import the useNavigate hook
 import { loginUser } from './loginregister'; 
+import { Link } from 'react-router-dom';
 import styles from './authstyle.module.css';
    // Assuming you already have this function
 
@@ -40,7 +41,9 @@ export default function Login() {
         />
       </div>
       <button onClick={handleLogin}>Login</button>
-      <p>Don't have an account? <a href="/register">Register here</a></p>
+      <p>
+  Don't have an account? <Link to="/register">Register here</Link>
+</p>
     </div>
   );
 }
