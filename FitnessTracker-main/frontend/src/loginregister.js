@@ -5,14 +5,15 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Firebase Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDRIbcH4TAfSG_bGL7A9QNyxfe_aZdPJns",
-  authDomain: "fitness-97148.firebaseapp.com",
-  projectId: "fitness-97148",
-  storageBucket: "fitness-97148.firebasestorage.app",
-  messagingSenderId: "576395512861",
-  appId: "1:576395512861:web:c7414f7b8689c173e80af4",
-  measurementId: "G-6R65DNQ9X6"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
